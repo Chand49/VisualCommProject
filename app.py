@@ -252,25 +252,38 @@ label, .stSlider label, .stSelectbox label {
     color: var(--text) !important;
     border-radius: 10px !important;
 }
-/* Progress bar */
+/* Progress bar — filled green, track dark, text always white */
+[data-testid="stProgress"] > div {
+    background-color: var(--bg3) !important;
+    border-radius: 4px !important;
+}
 [data-testid="stProgress"] > div > div {
     background-color: var(--accent) !important;
 }
-/* Slider thumb & active track — green, not red */
+[data-testid="stProgress"] p,
+[data-testid="stProgress"] ~ p,
+[data-testid="stProgress"] + p {
+    color: var(--text) !important;
+    background: transparent !important;
+}
+/* Slider — thumb green */
 [data-testid="stSlider"] [role="slider"] {
     background-color: var(--accent) !important;
     border-color: var(--accent) !important;
     box-shadow: 0 0 0 2px rgba(124,252,142,0.25) !important;
 }
-[data-testid="stSlider"] [data-baseweb="slider"] > div > div:nth-child(2) > div {
-    background-color: var(--accent) !important;
-}
-[data-testid="stSlider"] [data-baseweb="slider"] [data-testid="stTickBar"] + div > div > div:first-child {
-    background: var(--accent) !important;
-}
-/* Target the filled (left) portion of the slider track */
+/* Slider filled (left) track — green */
 [data-testid="stSlider"] [data-baseweb="slider"] > div > div > div:first-child {
     background: var(--accent) !important;
+}
+/* Slider unfilled (right) track — dim */
+[data-testid="stSlider"] [data-baseweb="slider"] > div > div > div:nth-child(3) {
+    background: #3a3a50 !important;
+}
+/* Slider current value label — green */
+[data-testid="stSlider"] div[data-baseweb="slider"] > div:last-child div,
+[data-testid="stSlider"] [data-baseweb="slider"] > div:last-child {
+    color: var(--accent) !important;
 }
 /* Tabs */
 [data-testid="stTabs"] button {
@@ -307,6 +320,22 @@ div[data-testid="stAlert"][kind="info"],
     color: var(--accent) !important;
     fill: var(--accent) !important;
     background: transparent !important;
+}
+/* Progress bar text label — always white, above the bar, never inside it */
+[data-testid="stProgress"] {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+}
+[data-testid="stProgress"] p {
+    color: var(--text) !important;
+    background: transparent !important;
+    font-family: 'Space Mono', monospace !important;
+    font-size: 0.72rem !important;
+    margin-bottom: 4px !important;
+}
+[data-testid="stProgress"] > div {
+    position: relative !important;
+    z-index: 0 !important;
 }
 /* Progress text inside spinner steps */
 [data-testid="stProgress"] + div,
