@@ -100,7 +100,7 @@ html, body, [data-testid="stAppViewContainer"] {
 .hero-subtitle {
     font-family: 'Space Mono', monospace;
     font-size: 0.78rem;
-    color: var(--muted);
+    color: #c8c8e0;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0 0 1rem 0;
@@ -256,6 +256,22 @@ label, .stSlider label, .stSelectbox label {
 [data-testid="stProgress"] > div > div {
     background-color: var(--accent) !important;
 }
+/* Slider thumb & active track — green, not red */
+[data-testid="stSlider"] [role="slider"] {
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px rgba(124,252,142,0.25) !important;
+}
+[data-testid="stSlider"] [data-baseweb="slider"] > div > div:nth-child(2) > div {
+    background-color: var(--accent) !important;
+}
+[data-testid="stSlider"] [data-baseweb="slider"] [data-testid="stTickBar"] + div > div > div:first-child {
+    background: var(--accent) !important;
+}
+/* Target the filled (left) portion of the slider track */
+[data-testid="stSlider"] [data-baseweb="slider"] > div > div > div:first-child {
+    background: var(--accent) !important;
+}
 /* Tabs */
 [data-testid="stTabs"] button {
     font-family: 'Space Mono', monospace !important;
@@ -266,6 +282,37 @@ label, .stSlider label, .stSelectbox label {
 [data-testid="stTabs"] button[aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom-color: var(--accent) !important;
+}
+/* Spinner / status box — keep dark background, no green */
+[data-testid="stStatusWidget"],
+[data-testid="stSpinner"],
+div[data-testid="stAlert"][kind="info"],
+.stSpinner > div,
+[data-baseweb="notification"] {
+    background-color: var(--bg2) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+}
+/* st.spinner wrapper that Streamlit wraps in a light/colored box */
+.stSpinner,
+[data-testid="stSpinnerContainer"],
+[data-testid="stSpinnerContainer"] > div {
+    background: var(--bg2) !important;
+    background-color: var(--bg2) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+}
+[data-testid="stStatusWidget"] > div,
+[data-testid="stStatusWidget"] svg {
+    color: var(--accent) !important;
+    fill: var(--accent) !important;
+    background: transparent !important;
+}
+/* Progress text inside spinner steps */
+[data-testid="stProgress"] + div,
+[data-testid="stProgressText"] {
+    color: var(--text) !important;
+    background: transparent !important;
 }
 /* Expander */
 [data-testid="stExpander"] {
